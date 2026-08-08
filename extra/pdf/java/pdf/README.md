@@ -6,4 +6,4 @@ make build
 make run
 ```
 
-*obs: é necessário ter o [cmake](https://cmake.org/) instalado para executar os comandos acima. Na ausência do cmake, utilize os comandos do Maven manualmente.
+*obs: é necessário ter o [gnumake](https://www.gnu.org/software/make/) instalado para executar os comandos acima. Na ausência do gnumake, utilize os comandos do Maven manualmente.
