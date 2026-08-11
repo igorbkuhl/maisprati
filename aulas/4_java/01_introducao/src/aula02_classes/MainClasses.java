@@ -1,3 +1,5 @@
+package aula02_classes;
+
 public class Main {
     public static void main(String[] args) {
         // Pessoa p1 = new Pessoa();
@@ -24,6 +26,7 @@ public class Main {
         // System.out.println(a[0]);
 
         Pessoa p5 = new Pessoa("Amauri", 25);
+        p5.setPeso(82);
         System.out.println(p5.getPeso());
         System.out.println(Pessoa.getSexo());
     }

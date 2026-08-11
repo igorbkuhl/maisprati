@@ -1,6 +1,8 @@
+package aula01_basicos;
+
 import java.util.Arrays;
 
-public class Main {
+public class MainBasicos {
     public static void main(String[] args) {
         System.out.println("Olá, mundo!");
     }

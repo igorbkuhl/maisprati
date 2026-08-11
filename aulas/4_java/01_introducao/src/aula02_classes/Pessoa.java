@@ -1,3 +1,5 @@
+package aula02_classes;
+
 public class Pessoa {
     public String nome;
     protected int idade;
@@ -8,7 +10,7 @@ public class Pessoa {
     public Pessoa(String nome, int idade) {
         this.nome = nome;
         this.idade = idade;
-        this.PI = 3.1415;
+        this.PI = 3.1415f;
     }
 
     // public void setPI(float valor) {
