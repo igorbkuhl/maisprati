@@ -1,0 +1,6 @@
+CREATE TABLE tag (
+    id        BIGSERIAL PRIMARY KEY,
+    nome      VARCHAR(60) NOT NULL UNIQUE,
+    slug      VARCHAR(60) NOT NULL UNIQUE
+);
+
