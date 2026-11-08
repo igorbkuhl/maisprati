@@ -1,5 +1,7 @@
 package exercicio_biblioteca.modelo;
 
+import exercicio_biblioteca.contrato.*;
+
 public abstract class Usuario {
     private final String matricula;
     private final String nome;
@@ -7,6 +9,7 @@ public abstract class Usuario {
     private final ItemAcervo[] itensEmprestados;
     private int quantidadeEmprestada;
     private double multaAcumulada;
+    private int itensAlugados;
     private static int totalUsuariosCriados;
 
     protected Usuario(String matricula, String nome, String email) {
@@ -16,7 +19,20 @@ public abstract class Usuario {
         this.itensEmprestados = new ItemAcervo[Config.MAXIMO_EMPRESTIMOS];
         this.quantidadeEmprestada = 0;
         this.multaAcumulada = 0;
+        this.itensAlugados = 0;
         totalUsuariosCriados++;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public abstract int getLimiteDeEmprestimos();
@@ -47,5 +63,21 @@ public abstract class Usuario {
         }
 
         return false;
+    }
+
+    public void acumularMulta(double multa) {
+        this.multaAcumulada += multa;
+    }
+
+    public int contarItensAlugados() {
+        return this.itensAlugados;
+    }
+
+    public void alugar() {
+        this.itensAlugados++;
+    }
+
+    public void devolver() {
+        this.itensAlugados = Integer.max(0, this.itensAlugados - 1);
     }
 }

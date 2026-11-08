@@ -1,5 +1,7 @@
 package exercicio_biblioteca.modelo;
 
+import exercicio_biblioteca.contrato.Reservavel;
+
 public class Livro extends ItemEmprestavel implements Reservavel {
     private final String autor;
     private final String isbn;
@@ -9,7 +11,7 @@ public class Livro extends ItemEmprestavel implements Reservavel {
     private static final int MAXIMO_RENOVACOES = 2;
 
     public Livro(String codigo, String titulo, int ano, String autor, String isbn) throws IllegalArgumentException {
-        super(codigo, titulo, ano);
+        super(codigo, titulo, ano, autor, isbn);
 
         if (autor == null || autor.isBlank()) {
             throw new IllegalArgumentException("Autor inválido.");
@@ -17,7 +19,7 @@ public class Livro extends ItemEmprestavel implements Reservavel {
 
         this.autor = autor;
         this.isbn = isbn;
-        this.renovacoesUtilizadas = null;
+        this.renovacoesUtilizadas = 0;
     }
 
     @Override
@@ -48,7 +50,7 @@ public class Livro extends ItemEmprestavel implements Reservavel {
 
     @Override
     public boolean temReserva() {
-        return this.reservante != null;
+        return this.nomeReservante != null;
     }
 
     @Override
@@ -67,7 +69,7 @@ public class Livro extends ItemEmprestavel implements Reservavel {
     }
 
     public boolean renovar() {
-        if (!this.permiteRenovacao) {
+        if (!this.permiteRenovacao()) {
             return false;
         }
 

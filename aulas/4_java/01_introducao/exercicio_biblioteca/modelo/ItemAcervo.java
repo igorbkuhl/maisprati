@@ -1,20 +1,18 @@
 package exercicio_biblioteca.modelo;
 
-import exercicio_biblioteca.contrato.Config;
-
 public abstract class ItemAcervo {
     private final String codigo;
     private final String titulo;
-    private final int ano;
+    private final Integer ano;
     private boolean disponivel;
     private static int totalItensCriados = 0;
 
-    protected ItemAcervo(String codigo, String titulo, int ano) throws IllegalArgumentException {
+    protected ItemAcervo(String codigo, String titulo, Integer ano) throws IllegalArgumentException {
         if (codigo == null || codigo.isBlank()) {
             throw new IllegalArgumentException("Código inválido.");
         } else if (titulo == null || titulo.isBlank()) {
             throw new IllegalArgumentException("Título inválido.");
-        } else if (ano < Config.ANO_MINIMO_PUBLICACAO || ano > Config.ANO_MAXIMO_PUBLICACAO) {
+        } else if (ano == null || ano < 0) {
             throw new IllegalArgumentException("Ano inválido.");
         }
 
@@ -30,15 +28,23 @@ public abstract class ItemAcervo {
     public abstract String getDescricao();
 
     public String getCodigo() {
-        return this.codigo;
+        return codigo;
     }
 
     public String getTitulo() {
-        return this.titulo;
+        return titulo;
     }
 
     public int getAno() {
-        return this.ano;
+        return ano;
+    }
+
+    public boolean getDisponivel() {
+        return disponivel;
+    }
+
+    private void setDisponivel(boolean disponivel) {
+        this.disponivel = disponivel;
     }
 
     public boolean isDisponivel() {
@@ -55,5 +61,9 @@ public abstract class ItemAcervo {
 
     protected static int getTotalItensCriados() {
         return totalItensCriados;
+    }
+
+    public static void setTotalItensCriados(int totalItensCriados) {
+        ItemAcervo.totalItensCriados = totalItensCriados;
     }
 }

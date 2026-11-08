@@ -5,7 +5,7 @@ import exercicio_biblioteca.contrato.Emprestavel;
 public abstract class ItemEmprestavel extends ItemAcervo implements Emprestavel {
     private Usuario usuarioAtual;
 
-    protected ItemEmprestavel(String codigo, String titulo, int ano) {
+    protected ItemEmprestavel(String codigo, String titulo, int ano, String autor, String isbn) {
         super(codigo, titulo, ano);
         this.usuarioAtual = null;
     }
@@ -20,6 +20,7 @@ public abstract class ItemEmprestavel extends ItemAcervo implements Emprestavel 
         }
 
         super.marcarComoEmpestado();
+        usuario.alugar();
         return true;
     }
 
